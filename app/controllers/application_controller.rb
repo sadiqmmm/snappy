@@ -1,9 +1,20 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  protected
-    def current_user
-    	current_user ||= 
+  # This two method will be available in views by using helper methods
+  helper_method [:current_user, :logged_in?]
 
-    end
+  protected
+  
+  def login(user)
+    session[:user_id] = user.id
+  end
+
+  def current_user
+  	current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def logged_in?
+   	!current_user.nil?
+  end
 end
