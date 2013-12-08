@@ -1,15 +1,15 @@
-<%= provide(:title, "Make it Snappy Q&A - Login") %>
+<% provide(:title, "Make it Snappy Q&A - Login") %>
 
 <h1>Login</h1>
 
-<%= form_for(:session, url: session_path) do |f| %>
+<%= form_for(:session, url: sessions_path) do |f| %>
  <p>
  	<%= f.label :username %>
  	<%= f.text_field :username %>
- </p>
+ </p> 
  <p>
  	<%= f.label :password %>
- 	<%= f.text_field :password %>
+ 	<%= f.password_field :password %>
  </p>
  <p>
  	<%= f.submit "Login" %>
